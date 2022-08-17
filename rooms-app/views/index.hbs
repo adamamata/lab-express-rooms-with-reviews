@@ -1,7 +1,8 @@
-<h1>{{appTitle}}</h1>
 {{#if currentUser}}
+<a href="/auth/logout">Logout</a>
 <h2>Welcome, {{currentUser.fullName}}!</h2>
-{{/if}}
+{{else}}
 <a href="/auth/signup">Signup</a>
 <a href="/auth/login">Login</a>
-<a href="/auth/logout">Logout</a>
+<h1>{{appTitle}}</h1>
+{{/if}}
