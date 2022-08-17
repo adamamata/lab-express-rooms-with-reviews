@@ -53,7 +53,7 @@ router.post('/:id/edit', isLoggedIn, (req, res) => {
 });
 
 //POST delete
-router.post('/:id/delete', (req ,res) => {
+router.post('/:id/delete', isLoggedIn, (req ,res) => {
     const { id } = req.params;
 
     Room.findByIdAndDelete(id)
