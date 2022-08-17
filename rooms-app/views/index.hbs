@@ -2,17 +2,21 @@
     <a href="/auth/logout">Logout</a>
     <a href="/rooms/create">New Room</a>
     <h2>Welcome, {{currentUser.fullName}}!</h2>
-    <h3>Rooms:</h3>
-    <ul>
-    {{#each allRooms}}
-        <li>
-            <p><strong>{{name}}</strong></p>
-            <p>Description: {{description}}</p>
-        </li>
-    {{/each}}
-    </ul>
 {{else}}
     <a href="/auth/signup">Signup</a>
     <a href="/auth/login">Login</a>
     <h1>{{appTitle}}</h1>
 {{/if}}
+<h3>Rooms:</h3>
+<ul>
+{{#each allRooms}}
+    <li>
+        <p><strong>{{name}}</strong></p>
+        <p>Description: {{description}}</p>
+        <a href="/rooms/{{_id}}/edit">Edit Room</a>
+        <form action="/rooms/{{_id}}/delete" method="POST">
+            <button type="submit">Delete Room</button>
+        </form>
+    </li>
+{{/each}}
+</ul>

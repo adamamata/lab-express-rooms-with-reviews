@@ -6,6 +6,12 @@
     <input type="text" name="description" placeholder="Pretty nice room">
     <label for="imageUrl-input">Image URL:</label>
     <input type="text" name="imageUrl">
+    <label for="owner-input">Select owner:</label>
+    <select name="owner" id="cast-input">
+    {{#each allUsers}}
+        <option value="{{id}}">{{fullName}}</option>
+    {{/each}}
+    </select>
     <button type="submit">Submit</button>
 </form>
 {{#if errorMessage}}
