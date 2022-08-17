@@ -48,7 +48,7 @@ router.post('/login', isLoggedOut, (req, res) => {
 
     //Checking if all fields contain data
     if (!email || !password){
-        res.render('auth/signup', { errorMessage: 'Please enter data in all fields. '});
+        res.render('auth/login', { errorMessage: 'Please enter data in all fields. '});
         return;
     }
     
