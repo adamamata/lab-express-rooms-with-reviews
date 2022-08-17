@@ -3,10 +3,14 @@
     <a href="/rooms/create">New Room</a>
     <h2>Welcome, {{currentUser.fullName}}!</h2>
     <h3>Rooms:</h3>
+    <ul>
     {{#each allRooms}}
-        <p>Name: {{name}}</p>
-        <p>Description: {{description}}</p>
+        <li>
+            <p><strong>{{name}}</strong></p>
+            <p>Description: {{description}}</p>
+        </li>
     {{/each}}
+    </ul>
 {{else}}
     <a href="/auth/signup">Signup</a>
     <a href="/auth/login">Login</a>
