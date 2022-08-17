@@ -24,7 +24,7 @@ require("./config/session")(app);
 const capitalized = require("./utils/capitalized");
 const projectName = "rooms-app";
 
-app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
+app.locals.appTitle = `${capitalized(projectName)}`;
 
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");
@@ -32,9 +32,6 @@ app.use("/", index);
 
 const authRoute = require('./routes/auth.routes');
 app.use('/auth', authRoute);
-
-const userRoute = require('./routes/users.routes');
-app.use('/users', userRoute);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
