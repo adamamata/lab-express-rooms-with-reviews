@@ -18,8 +18,7 @@ router.get('/:id', (req, res) => {
 //POST :id
 router.post('/:id', (req, res) => {
     const { id } = req.params;
-    const { review } = req.body;
-
+    
     //Need to finish this
 });
 
