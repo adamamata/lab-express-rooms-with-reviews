@@ -5,7 +5,7 @@ const { isLoggedIn } = require("../middleware/route-guard");
 const { isLoggedOut } = require("../middleware/route-guard");
 
 //GET :id
-router.get('/:id', (req, res) => {
+router.get('/:id/review', (req, res) => {
     const { id } = req.params;
 
     Room.findById(id)
@@ -15,11 +15,8 @@ router.get('/:id', (req, res) => {
         .catch(err => console.log(err));
 });
 
-//POST :id
-router.post('/:id', (req, res) => {
-    const { id } = req.params;
-    
-    //Need to finish this
+//POST :id   //Need to finish this
+router.post('/:id/review', (req, res) => {
 });
 
 module.exports = router;
