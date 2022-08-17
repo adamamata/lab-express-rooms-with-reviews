@@ -1,8 +1,14 @@
 {{#if currentUser}}
-<a href="/auth/logout">Logout</a>
-<h2>Welcome, {{currentUser.fullName}}!</h2>
+    <a href="/auth/logout">Logout</a>
+    <a href="/rooms/create">New Room</a>
+    <h2>Welcome, {{currentUser.fullName}}!</h2>
+    <h3>Rooms:</h3>
+    {{#each allRooms}}
+        <p>Name: {{name}}</p>
+        <p>Description: {{description}}</p>
+    {{/each}}
 {{else}}
-<a href="/auth/signup">Signup</a>
-<a href="/auth/login">Login</a>
-<h1>{{appTitle}}</h1>
+    <a href="/auth/signup">Signup</a>
+    <a href="/auth/login">Login</a>
+    <h1>{{appTitle}}</h1>
 {{/if}}
