@@ -6,7 +6,7 @@ router.get("/", (req, res, next) => {
   const { currentUser } = req.session;
   Room.find()
     .then((allRooms) => {
-      res.render("index", { currentUser, allRooms });
+      res.render("index", { currentUser, allRooms, });
     })
     .catch(err => console.log(err));
 });

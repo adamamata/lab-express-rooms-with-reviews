@@ -30,9 +30,16 @@ router.post('/create', isLoggedIn, (req, res) => {
 //GET edit
 router.get('/:id/edit', isLoggedIn, (req, res) => {
     const { id } = req.params;
+    const { currentUser } = req.session;
     Room.findById(id)
         .then((room) => {
-            res.render('rooms/edit', room);
+            //Conditional to check if current user is owner of room
+            if (room.owner.toString() === currentUser._id){
+                res.render('rooms/edit', room);
+            }
+            else {
+                res.redirect('/');
+            }
         })
         .catch(err => console.log(err));
 });
@@ -40,7 +47,7 @@ router.get('/:id/edit', isLoggedIn, (req, res) => {
 //POST edit
 router.post('/:id/edit', isLoggedIn, (req, res) => {
     const { id } = req.params;
-    const { name, description, imageUrl} = req.body;
+    const { name, description, imageUrl } = req.body;
 
     if (!name || !description){
         res.render('rooms/edit', { errorMessage: 'Please add a name and description'});
@@ -55,9 +62,19 @@ router.post('/:id/edit', isLoggedIn, (req, res) => {
 //POST delete
 router.post('/:id/delete', isLoggedIn, (req ,res) => {
     const { id } = req.params;
+    const { currentUser } = req.session;
 
-    Room.findByIdAndDelete(id)
-        .then(() => res.redirect('/'))
+    Room.findById(id)
+        .then((room) => {
+            //Conditional to check if current user is owner of room
+            if (room.owner.toString() === currentUser._id){
+                room.delete();
+                res.redirect('/');
+            }
+            else {
+                res.redirect('/');
+            }
+        })
         .catch(err => console.log(err));
 });
 
